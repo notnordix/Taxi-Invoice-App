@@ -1,0 +1,28 @@
+[
+    {
+        "date": "11/04/2025",
+        "name": "DEXTER",
+        "departure_time": "04:00",
+        "arrival_time": "05:15",
+        "total": 1763.7,
+        "tarifs": [
+            666.0,
+            0.0,
+            990.0,
+            0.0
+        ]
+    },
+    {
+        "date": "11/04/2025",
+        "name": "Noureddine",
+        "departure_time": "05:00",
+        "arrival_time": "05:30",
+        "total": 1595.7,
+        "tarifs": [
+            888.0,
+            0.0,
+            600.0,
+            0.0
+        ]
+    }
+]
