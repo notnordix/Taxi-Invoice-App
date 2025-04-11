@@ -468,20 +468,20 @@ Heure d'arrivée:         {invoice['arrival_time']:<20}
 ******************************
 Tarif(s) appliqué(s)
 
-Tarif A (km):   {invoice['tarifs'][0]:>10.2f} MAD
-Tarif B (km):   {invoice['tarifs'][1]:>10.2f} MAD
-Tarif C (km):   {invoice['tarifs'][2]:>10.2f} MAD
-Tarif D (km):   {invoice['tarifs'][3]:>10.2f} MAD
+Tarif A (km):     {invoice['tarifs'][0]:>10.2f} €
+Tarif B (km):     {invoice['tarifs'][1]:>10.2f} €
+Tarif C (km):     {invoice['tarifs'][2]:>10.2f} €
+Tarif D (km):     {invoice['tarifs'][3]:>10.2f} €
 
-RESA:           {float(self.resa_var.get()):>10.2f} MAD
-Prise en charge:{PRISE_EN_CHARGE:>10.2f} MAD
-Ajouter au total:{float(self.add_to_total_var.get()):>9.2f} MAD
+RESA:             {float(self.resa_var.get()):>10.2f} €
+Prise en charge:  {PRISE_EN_CHARGE:>10.2f} €
+Ajouter au total: {float(self.add_to_total_var.get()):>10.2f} €
 
-Total TTC:      {invoice['total']:>10.2f} MAD
-TVA (10%):      {invoice['total']*0.10:>10.2f} MAD
-Sous-total HT:  {invoice['total']*0.90:>10.2f} MAD
+Total TTC:        {invoice['total']:>10.2f} €
+TVA (10%):        {invoice['total']*0.10:>10.2f} €
+Sous-total HT:    {invoice['total']*0.90:>10.2f} €
 ******************************
-Nom du client:          {invoice['name']:<20}
+Nom du client:        {invoice['name']:<20}
 ******************************
 
     Exemplaire chauffeur
@@ -505,20 +505,20 @@ Heure d'arrivée:         {self.selected_invoice['arrival_time']:<20}
 ******************************
 Tarif(s) appliqué(s)
 
-Tarif A (km):   {self.selected_invoice['tarifs'][0]:>10.2f} MAD
-Tarif B (km):   {self.selected_invoice['tarifs'][1]:>10.2f} MAD
-Tarif C (km):   {self.selected_invoice['tarifs'][2]:>10.2f} MAD
-Tarif D (km):   {self.selected_invoice['tarifs'][3]:>10.2f} MAD
+Tarif A (km):     {self.selected_invoice['tarifs'][0]:>10.2f} €
+Tarif B (km):     {self.selected_invoice['tarifs'][1]:>10.2f} €
+Tarif C (km):     {self.selected_invoice['tarifs'][2]:>10.2f} €
+Tarif D (km):     {self.selected_invoice['tarifs'][3]:>10.2f} €
 
-RESA:           {float(self.resa_var.get()):>10.2f} MAD
-Prise en charge:{PRISE_EN_CHARGE:>10.2f} MAD
-Ajouter au total:{float(self.add_to_total_var.get()):>9.2f} MAD
+RESA:             {float(self.resa_var.get()):>10.2f} €
+Prise en charge:  {PRISE_EN_CHARGE:>10.2f} €
+Ajouter au total: {float(self.add_to_total_var.get()):>10.2f} €
 
-Total TTC:      {self.selected_invoice['total']:>10.2f} MAD
-TVA (10%):      {self.selected_invoice['total']*0.10:>10.2f} MAD
-Sous-total HT:  {self.selected_invoice['total']*0.90:>10.2f} MAD
+Total TTC:        {self.selected_invoice['total']:>10.2f} €
+TVA (10%):        {self.selected_invoice['total']*0.10:>10.2f} €
+Sous-total HT:    {self.selected_invoice['total']*0.90:>10.2f} €
 ******************************
-Nom du client:          {self.selected_invoice['name']:<20}
+Nom du client:        {self.selected_invoice['name']:<20}
 ******************************
 
     Exemplaire chauffeur
@@ -544,16 +544,16 @@ Nom du client:          {self.selected_invoice['name']:<20}
         if self.tooltip:
             self.tooltip.destroy()
         self.tooltip = tk.Label(
-            self.title_frame,
-            text="Afficher l'aide",
-            background="yellow",
+            self.root,  # Use the root window for consistent placement
+            text="Aide",
+            background="white",
             relief="solid",
             borderwidth=1
         )
-        self.tooltip.place(
-            x=self.help_button.winfo_x(),
-            y=self.help_button.winfo_y() + self.help_button.winfo_height() + 5
-        )
+        # Calculate the position relative to the help button
+        x = self.help_button.winfo_rootx() - self.root.winfo_rootx()
+        y = self.help_button.winfo_rooty() - self.root.winfo_rooty() + self.help_button.winfo_height() + 10
+        self.tooltip.place(x=x, y=y)
 
     def hide_tooltip(self, event):
         if self.tooltip:
