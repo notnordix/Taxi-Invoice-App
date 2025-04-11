@@ -391,13 +391,17 @@ class TaxiApp:
         departure_time = f"{self.depart_hour.get()}:{self.depart_minute.get()}"
         arrival_time = f"{self.arrivee_hour.get()}:{self.arrivee_minute.get()}"
         tarifs = [float(var.get()) for var in self.tarif_vars]  # Collect tarifs values
+        resa_val = self.resa_var.get()  # Get the RESA value
+        add_val = float(self.add_to_total_var.get())  # Get the Ajouter au total value
         invoice = {
             "date": self.date_var.get(),
             "name": self.nom_var.get(),
             "departure_time": departure_time,
             "arrival_time": arrival_time,
             "total": float(self.total_var.get()),
-            "tarifs": tarifs  # Add tarifs to the invoice
+            "tarifs": tarifs,  # Add tarifs to the invoice
+            "resa": resa_val,  # Add RESA value to the invoice
+            "add_to_total": add_val  # Add Ajouter au total value to the invoice
         }
         self.data.append(invoice)
         self.save_data()
